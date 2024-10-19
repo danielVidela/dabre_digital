@@ -1,117 +1,163 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ofrecemos servicios de marketing digital y gestión de redes sociales a emprendedores y pymes en Mendoza, Argentina.">
-    <meta name="keywords" content="marketing digital, gestión de redes sociales, creación de sitios web, pymes, emprendedores, Mendoza, Argentina">
-    <meta name="author" content="Tu Nombre">
-    <meta name="robots" content="index, follow">
-    <title>Marketing para PYMES en Mendoza - DABRE Digital</title>
-    <!-- Open Graph para redes sociales -->
-    <meta property="og:title" content="Marketing Digital para PYMES en Mendoza - Tu Empresa">
-    <meta property="og:description" content="Ayudamos a emprendedores y pymes a crecer con servicios de marketing digital, redes sociales y diseño web.">
-    <meta property="og:image" content="URL_DE_TU_IMAGEN">
-    <meta property="og:url" content="https://tusitioweb.com">
-    <meta property="og:type" content="website">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- Estilos básicos -->
+    <title>DABRE Digital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #F4F4F4;
-            color: #333;
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 20px;
-            text-align: center;
+        .animated-bg {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
         }
-        nav {
-            display: flex;
-            justify-content: center;
-            padding: 10px;
-            background-color: #333;
+        .text-stroke {
+            -webkit-text-stroke: 2px white;
+            color: transparent;
         }
-        nav a {
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
+        .parallax-text {
+            transform: translateZ(-10px) scale(2);
         }
-        nav a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-        .container {
-            padding: 20px;
-            text-align: left;
-        }
-        .whatsapp-button {
-            background-color: #25D366;
-            color: white;
-            padding: 15px 20px;
-            text-align: center;
-            border: none;
-            border-radius: 5px;
-            font-size: 18px;
-            cursor: pointer;
-            display: inline-block;
-            margin-top: 20px;
-            text-decoration: none;
-        }
-        .whatsapp-button:hover {
-            background-color: #1EBE58;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px;
+        .glitch {
             position: relative;
+        }
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            bottom: 0;
+            height: 100%;
+        }
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 #ff00c1;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
+            animation: glitch-anim2 1s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim {
+            0% { clip: rect(10px, 9999px, 31px, 0); }
+            25% { clip: rect(25px, 9999px, 98px, 0); }
+            50% { clip: rect(42px, 9999px, 73px, 0); }
+            75% { clip: rect(67px, 9999px, 62px, 0); }
+            100% { clip: rect(38px, 9999px, 19px, 0); }
+        }
+        @keyframes glitch-anim2 {
+            0% { clip: rect(65px, 9999px, 119px, 0); }
+            25% { clip: rect(79px, 9999px, 12px, 0); }
+            50% { clip: rect(7px, 9999px, 94px, 0); }
+            75% { clip: rect(53px, 9999px, 165px, 0); }
+            100% { clip: rect(28px, 9999px, 16px, 0); }
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .heartbeat {
+            animation: heartbeat 1s infinite;
+        }
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shine::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0.3) 0%,
+                rgba(255, 255, 255, 0.15) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
         }
     </style>
 </head>
-<body>
-    <header>
-        <h1><strong>DABRE </strong>Marketing Digital para PYMES en Mendoza</h1>
-        <p>Ayudamos a emprendedores y pequeñas empresas a crecer el mercado online</p>
-    </header>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <main>
+        <section id="home" class="hero h-screen flex items-center justify-center relative overflow-hidden animated-bg">
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="grid grid-cols-5 gap-4 opacity-20">
+                    <!-- Add 25 div elements for the interactive background -->
+                    <div class="w-16 h-16 bg-white rounded-full transform hover:scale-150 transition-transform duration-300"></div>
+                    <!-- Repeat this div 24 more times -->
+                </div>
+            </div>
+            <div class="text-center z-10 perspective-1000">
+                <h1 class="text-7xl md:text-9xl font-bold mb-4 text-white relative">
+                    <span class="block transform transition-transform duration-500 hover:scale-110 glitch" data-text="DABRE">DABRE</span>
+                    <span class="block text-stroke transform transition-transform duration-500 hover:scale-110 glitch" data-text="DIGITAL">DIGITAL</span>
+                </h1>
+                <div>
+                <p class="text-sm md:text-2xl mb-8 text-white parallax-text"><br>Ayudamos a <br>emprendedores y pequeñas <br>empresas a crecer <br>el mercado online</p>
+                <br>
+            </div>
+                <div class="flex justify-center space-x-4">
+                    <a href="#portfolio" class="bg-white text-gray-900 font-bold py-3 px-6 rounded-full transition-all duration-300 hover:bg-gray-200 hover:scale-105 transform hover:rotate-3 relative overflow-hidden group btn-shine">
+                        <span class="relative z-10">Nuestros Clientes</span>
+                        <span class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    </a>
+                    <a href="https://wa.me/542613868260" target="_blank" class="bg-transparent border-2 border-white text-white font-bold py-3 px-6 rounded-full transition-all duration-300 hover:bg-white hover:text-gray-900 hover:scale-105 transform hover:-rotate-3 group btn-shine flex items-center">
+                        <!-- Icono de WhatsApp (usando FontAwesome) -->
+                        <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.74 13.25c-.39-.19-2.3-1.14-2.65-1.28-.35-.13-.61-.19-.87.2-.26.38-1 1.28-1.22 1.54-.22.26-.45.3-.84.11-.39-.19-1.64-.61-3.12-1.95-1.15-1.03-1.93-2.29-2.15-2.68-.22-.39-.02-.6.17-.79.17-.17.39-.45.58-.67.19-.23.26-.39.39-.64.13-.26.07-.48-.04-.67-.11-.19-.87-2.11-1.19-2.88-.31-.75-.62-.65-.87-.66h-.74c-.26 0-.67.1-1.01.48-.35.38-1.31 1.27-1.31 3.1s1.34 3.6 1.53 3.85c.19.26 2.63 4.01 6.36 5.52.89.38 1.58.61 2.12.78.89.28 1.7.24 2.34.15.71-.11 2.3-.94 2.63-1.84.32-.9.32-1.68.22-1.84-.1-.15-.36-.23-.74-.42z"/>
+                            <path d="M12.04 2C6.52 2 2 6.52 2 12.04c0 1.85.49 3.66 1.42 5.26L2 22l4.78-1.42c1.6.93 3.41 1.42 5.26 1.42 5.52 0 10.04-4.52 10.04-10.04S17.56 2 12.04 2zm0 18.4c-1.68 0-3.34-.46-4.77-1.34l-.34-.2-2.84.84.85-2.77-.22-.36c-.84-1.4-1.29-3-1.29-4.66 0-5 4.06-9.06 9.06-9.06s9.06 4.06 9.06 9.06-4.06 9.06-9.06 9.06z"/>
+                        </svg>
+                        <span class="relative z-10">Contáctanos</span>
+                        <span class="absolute inset-0 bg-gradient-to-r from-pink-500 to-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    </a>
+                    
+                </div>
+            </div>
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <svg class="w-6 h-6 text-white" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </div>
+            <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+                <div class="w-64 h-64 absolute top-1/4 left-1/4 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob floating"></div>
+                <div class="w-64 h-64 absolute top-1/3 right-1/4 bg-yellow-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000 floating"></div>
+                <div class="w-64 h-64 absolute bottom-1/4 left-1/3 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000 floating"></div>
+            </div>
+            <div class="absolute top-4 right-4 text-white text-4xl heartbeat">❤️</div>
+        </section>
 
-    <nav>
-        <a href="#servicios">Servicios</a>
-        <a href="#contacto">Contacto</a>
-    </nav>
+        <!-- Rest of your content -->
+    </main>
 
-    <div class="container" id="servicios">
-        <h2>¿Qué hacemos?</h2>
-        <p>Ofrecemos servicios integrales de marketing digital, incluyendo:</p>
-        <ul>
-            <li>Gestión de redes sociales (Instagram, Facebook, LinkedIn, etc.)</li>
-            <li>Creación de sitios web adaptados a tus necesidades</li>
-            <li>Campañas de publicidad online</li>
-        
-        </ul>
-        <p>Trabajamos con emprendedores y pequeñas empresas en Mendoza, brindando soluciones accesibles y personalizadas.</p>
-        
-        <!-- Botón de WhatsApp -->
-    </div>
-
-    <div class="container" id="contacto">
-        <h2>Contacto</h2>
-        <p>Para más información, contáctanos al siguiente email: <strong>dabredigital@gmail.com</strong></p>
-        <a href="https://wa.me/542613868260" class="whatsapp-button" target="_blank">Contáctanos por WhatsApp</a>
-
-    </div>
-<br>
-<br>
-    <footer>
-        <p>&copy; 2024 DABRE | Marketing Digital en Mendoza, Argentina</p>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
 </body>
 </html>
